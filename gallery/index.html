@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Retro Rally — Proton</title>
-    <meta name="description" content="Retro Rally — страница игры" />
+    <title>Галерея — Proton</title>
+    <meta name="description" content="Галерея игр Proton" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@400;600&display=swap"
@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="../css/style.css" />
   </head>
   <body>
-    <!-- Чекбоксы-триггеры: тема, мобильное меню, модальное окно (CSS-only) -->
     <input type="checkbox" id="themeToggleGallery" class="themeToggle" />
     <input type="checkbox" id="mobileToggle" class="mobileToggle" />
     <input type="checkbox" id="modalToggle" class="modalToggle" />
@@ -22,8 +21,8 @@
     <div class="site">
       <header class="header">
         <div class="headerInner">
-          <a class="brand" href="../"
-            ><svg class="brandLogo" width="36" height="36" viewBox="0 0 24 24">
+          <a class="brand" href="../">
+            <svg class="brandLogo" width="36" height="36" viewBox="0 0 24 24">
               <rect
                 x="1"
                 y="1"
@@ -41,9 +40,10 @@
                 stroke-width="1.6"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-              /></svg
-            ><span class="brandText">Proton</span></a
-          >
+              />
+            </svg>
+            <span class="brandText">Proton</span>
+          </a>
 
           <nav class="nav">
             <ul class="navList">
@@ -54,105 +54,149 @@
           </nav>
 
           <div class="headerActions">
-            <a class="cta" href="../gallery/">Back</a>
-            <!-- Бургер для мобильной навигации -->
+            <label
+              for="themeToggle"
+              class="themeBtn"
+              title="Toggle theme"
+              role="button"
+              aria-pressed="false"
+              >Тема</label
+            >
+            <a class="cta" href="">Explore</a>
             <label for="mobileToggle" class="hamburger" aria-hidden="true">
               <span></span><span></span><span></span>
             </label>
           </div>
         </div>
+
+        <nav class="mobileNav" role="navigation" aria-label="Мобильное меню">
+          <ul class="mobileNavList">
+            <li><a href="../">Home</a></li>
+            <li><a href="./">Gallery</a></li>
+            <li><a href="../bio/">About</a></li>
+            <li>
+              <label for="modalToggle" class="mobileContact">Contact</label>
+            </li>
+          </ul>
+        </nav>
       </header>
 
-      <!-- Мобильное меню (появляется при нажатии на бургер) -->
-      <nav class="mobileNav" role="navigation" aria-label="Мобильное меню">
-        <ul class="mobileNavList">
-          <li><a href="../">Home</a></li>
-          <li><a href="./">Gallery</a></li>
-          <li><a href="../bio/">About</a></li>
-          <li>
-            <label for="modalToggle" class="mobileContact">Contact</label>
-          </li>
-        </ul>
-      </nav>
-
       <main class="main">
-        <section class="gameHero">
+        <section class="featured" aria-labelledby="galleryTitle">
           <div class="container">
-            <div class="gameHeroInner">
-              <div class="gameMedia">
+            <h2 id="galleryTitle">Галерея игр</h2>
+
+            <div class="cards" role="list">
+              <article class="card" role="listitem">
                 <picture>
                   <source
                     type="image/webp"
-                    srcset="../assets/game3-1200.webp"
+                    srcset="
+                      ../assets/game1-600.webp   600w,
+                      ../assets/game1-1200.webp 1200w
+                    "
                   />
                   <img
-                    src="../assets/game3-1200.jpg"
-                    alt="Retro Rally hero"
-                    width="1000"
-                    height="560"
+                    src="../assets/game1-600.jpg"
+                    alt="Cyberpunk 2077"
+                    width="420"
+                    height="240"
                   />
                 </picture>
-              </div>
-
-              <div class="gameInfo">
-                <h1>The Witcher 3: Wild Hunt</h1>
-                <p class="meta">Action RPG · CD Projekt Red · 2015</p>
-                <p class="desc">
-                  Отправься в эпическое путешествие как Геральт из Ривии.
-                  Исследуй опасные земли, охотись на монстров и формируй свою
-                  судьбу через выборы, которые изменяют историю.
-                </p>
-                <div class="purchase">
-                  <a class="buttonPrimary" href="#">Купить — $9.99</a>
-                  <a class="buttonGhost" href="#">Добавить в Wishlist</a>
+                <div class="cardBody">
+                  <h3>Cyberpunk 2077</h3>
+                  <p class="meta">Action RPG · CD Projekt Red · 2020</p>
+                  <p class="desc">
+                    Погрузись в киберпанковый мир Найт-Сити и создай свою
+                    историю.
+                  </p>
+                  <div class="cardActions">
+                    <a class="cardBtn" href="project1.html">Подробнее</a>
+                    <a class="cardBtnGhost" href="#">Wishlist</a>
+                  </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </section>
+              </article>
 
-        <section class="gameGallery container">
-          <h2>Скриншоты</h2>
-          <div class="shotGrid">
-            <picture
-              ><source type="image/webp" srcset="../assets/shot3.webp" />
-              <img
-                src="../assets/shot3.jpg"
-                alt="Shot 3"
-                width="600"
-                height="340"
-            /></picture>
-            <picture
-              ><source type="image/webp" srcset="../assets/shot3b.webp" />
-              <img
-                src="../assets/shot3b.jpg"
-                alt="Shot 3b"
-                width="600"
-                height="340"
-            /></picture>
-            <picture
-              ><source type="image/webp" srcset="../assets/shot3c.webp" />
-              <img
-                src="../assets/shot3c.jpg"
-                alt="Shot 3c"
-                width="600"
-                height="340"
-            /></picture>
+              <article class="card" role="listitem">
+                <picture>
+                  <source
+                    type="image/webp"
+                    srcset="
+                      ../assets/game2-600.webp   600w,
+                      ../assets/game2-1200.webp 1200w
+                    "
+                  />
+                  <img
+                    src="../assets/game2-600.jpg"
+                    alt="Elden Ring"
+                    width="420"
+                    height="240"
+                  />
+                </picture>
+                <div class="cardBody">
+                  <h3>Elden Ring</h3>
+                  <p class="meta">Action RPG · FromSoftware · 2022</p>
+                  <p class="desc">
+                    Станьте Повелителем Колец в величественном открытом мире.
+                  </p>
+                  <div class="cardActions">
+                    <a class="cardBtn" href="project2.html">Подробнее</a>
+                    <a class="cardBtnGhost" href="#">Wishlist</a>
+                  </div>
+                </div>
+              </article>
+
+              <article class="card" role="listitem">
+                <picture>
+                  <source
+                    type="image/webp"
+                    srcset="
+                      ../assets/game3-600.webp   600w,
+                      ../assets/game3-1200.webp 1200w
+                    "
+                  />
+                  <img
+                    src="../assets/game3-600.jpg"
+                    alt="Baldur's Gate 3"
+                    width="420"
+                    height="240"
+                  />
+                </picture>
+                <div class="cardBody">
+                  <h3>Baldur's Gate 3</h3>
+                  <p class="meta">RPG · Larian Studios · 2023</p>
+                  <p class="desc">
+                    Легендарная RPG на основе D&D 5th Edition с бесконечными
+                    возможностями.
+                  </p>
+                  <div class="cardActions">
+                    <a class="cardBtn" href="project3.html">Подробнее</a>
+                    <a class="cardBtnGhost" href="#">Wishlist</a>
+                  </div>
+                </div>
+              </article>
+            </div>
           </div>
         </section>
       </main>
 
       <footer class="footer">
         <div class="container footerInner">
-          <div class="brandSmall"><span class="brandText">Proton</span></div>
-          <nav class="footerNav">
-            <a href="../">Home</a><a href="./">Gallery</a>
+          <div class="brandSmall">
+            <span class="brandText">Proton</span>
+            <small class="muted">© 2025</small>
+          </div>
+
+          <nav class="footerNav" aria-label="Footer links">
+            <a href="../">Home</a>
+            <a href="./">Gallery</a>
+            <a href="../bio/">About</a>
+            <label for="modalToggle" class="footerContact">Contact</label>
           </nav>
         </div>
       </footer>
     </div>
 
-    <!-- Модальное окно (Контактная форма, CSS-only) -->
     <div class="modal" role="dialog" aria-modal="true" aria-hidden="true">
       <div class="modalCard">
         <label for="modalToggle" class="modalClose" aria-label="Close">✕</label>
