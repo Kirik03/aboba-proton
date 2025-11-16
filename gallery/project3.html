@@ -3,45 +3,132 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="This site is a multi-page website template created by Chelsea Thompto."
+    <title>Baldur's Gate 3 — Proton</title>
+    <meta name="description" content="Baldur's Gate 3 — страница игры" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
     />
-    <title>Project 3 Template</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/style.css" />
   </head>
   <body>
-    <!--Navigation Bar-->
-    <div class="topnav">
-      <div><a href="../../">Home</a></div>
-      <div id="gallery">
-        <a class="active" href="../">Gallery</a>
-        <div id="gal-list">
-          <a href="./">Project 1</a>
-          <a href="../project2/">Project 2</a>
-          <a class="active" href="../project3/">Project 3</a>
+    <div class="site">
+      <header class="header">
+        <div class="headerInner">
+          <a class="brand" href="../"
+            ><svg class="brandLogo" width="36" height="36" viewBox="0 0 24 24">
+              <rect
+                x="1"
+                y="1"
+                width="22"
+                height="22"
+                rx="5"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+              />
+              <path
+                d="M6 15 L10 9 L14 15"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              /></svg
+            ><span class="brandText">Proton</span></a
+          >
+
+          <nav class="nav">
+            <ul class="navList">
+              <li><a href="../" class="navLink">Home</a></li>
+              <li><a href="./" class="navLink">Gallery</a></li>
+              <li><a href="../bio/" class="navLink">About</a></li>
+            </ul>
+          </nav>
+
+          <div class="headerActions">
+            <a class="cta" href="../gallery/">Back</a>
+          </div>
         </div>
-      </div>
-      <div><a href="../../bio/">Bio</a></div>
+      </header>
+
+      <main class="main">
+        <section class="gameHero">
+          <div class="container">
+            <div class="gameHeroInner">
+              <div class="gameMedia">
+                <picture>
+                  <source
+                    type="image/webp"
+                    srcset="../assets/game1-1200.webp"
+                  />
+                  <img
+                    src="../assets/game1-1200.jpg"
+                    alt="Baldur's Gate 3 hero"
+                    width="1000"
+                    height="560"
+                  />
+                </picture>
+              </div>
+
+              <div class="gameInfo">
+                <h1>Baldur's Gate 3</h1>
+                <p class="meta">RPG · Larian Studios · 2023</p>
+                <p class="desc">
+                  Легендарная ролевая игра основана на правилах D&D 5th Edition.
+                  Создай своего персонажа, собери партию и отправляйся в
+                  эпическое путешествие, где каждый выбор имеет значение.
+                </p>
+                <div class="purchase">
+                  <a class="buttonPrimary" href="#">Купить — $59.99</a>
+                  <a class="buttonGhost" href="#">Добавить в Wishlist</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="gameGallery container">
+          <h2>Скриншоты</h2>
+          <div class="shotGrid">
+            <picture
+              ><source type="image/webp" srcset="../assets/shot1.webp" />
+              <img
+                src="../assets/shot1.jpg"
+                alt="Shot 1"
+                width="600"
+                height="340"
+            /></picture>
+            <picture
+              ><source type="image/webp" srcset="../assets/shot1b.webp" />
+              <img
+                src="../assets/shot1b.jpg"
+                alt="Shot 1b"
+                width="600"
+                height="340"
+            /></picture>
+            <picture
+              ><source type="image/webp" srcset="../assets/shot1c.webp" />
+              <img
+                src="../assets/shot1c.jpg"
+                alt="Shot 1c"
+                width="600"
+                height="340"
+            /></picture>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="container footerInner">
+          <div class="brandSmall"><span class="brandText">Proton</span></div>
+          <nav class="footerNav">
+            <a href="../">Home</a><a href="./">Gallery</a>
+          </nav>
+        </div>
+      </footer>
     </div>
-    <div class="content">
-        <h1>Project 3</h1>
-        <div class="proj"><img src="../../img/project3.png" alt="Project 3 Placeholder"></div>
-        <h2>
-            Overview
-        </h2>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec enim diam vulputate ut pharetra. Tristique senectus et netus et malesuada. Habitasse platea dictumst quisque sagittis purus sit amet volutpat consequat. Nec dui nunc mattis enim. Morbi tincidunt ornare massa eget. In hac habitasse platea dictumst quisque sagittis purus sit. Eu turpis egestas pretium aenean pharetra magna ac placerat vestibulum. Urna duis convallis convallis tellus. Nisl purus in mollis nunc sed. Aliquam faucibus purus in massa tempor. Hac habitasse platea dictumst vestibulum rhoncus est pellentesque elit. Eget mi proin sed libero enim.
-        </p>
-        
-    </div>
-    <footer class="footer">
-        <p>
-          Designed by Chelsea Thompto | <a href="https://chelsea.technology/" target="_blank">https://chelsea.technology/</a> | 2023 MIT License
-        </p>
-    </footer>
-    </body>
+  </body>
 </html>

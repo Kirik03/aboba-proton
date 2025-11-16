@@ -1,78 +1,135 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
-<head>
+  <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Project Alpha — Proton</title>
     <meta name="description" content="Project Alpha — страница игры" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="../css/reset.css" />
     <link rel="stylesheet" href="../css/style.css" />
-</head>
-<body>
+  </head>
+  <body>
     <div class="site">
-        <header class="header">
-            <div class="headerInner">
-                <a class="brand" href="../" aria-label="Proton — главная">
-                    <svg class="brandLogo" width="36" height="36" viewBox="0 0 24 24"><rect x="1" y="1" width="22" height="22" rx="5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M6 15 L10 9 L14 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    <span class="brandText">Proton</span>
-                </a>
+      <header class="header">
+        <div class="headerInner">
+          <a class="brand" href="../" aria-label="Proton — главная">
+            <svg class="brandLogo" width="36" height="36" viewBox="0 0 24 24">
+              <rect
+                x="1"
+                y="1"
+                width="22"
+                height="22"
+                rx="5"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+              />
+              <path
+                d="M6 15 L10 9 L14 15"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <span class="brandText">Proton</span>
+          </a>
 
-                <nav class="nav">
-                    <ul class="navList">
-                        <li><a href="../" class="navLink">Home</a></li>
-                        <li><a href="./" class="navLink">Gallery</a></li>
-                        <li><a href="../bio/" class="navLink">About</a></li>
-                    </ul>
-                </nav>
+          <nav class="nav">
+            <ul class="navList">
+              <li><a href="../" class="navLink">Home</a></li>
+              <li><a href="./" class="navLink">Gallery</a></li>
+              <li><a href="../bio/" class="navLink">About</a></li>
+            </ul>
+          </nav>
 
-                <div class="headerActions">
-                    <a class="cta" href="../gallery/">Back</a>
+          <div class="headerActions">
+            <a class="cta" href="../gallery/">Back</a>
+          </div>
+        </div>
+      </header>
+
+      <main class="main">
+        <section class="gameHero">
+          <div class="container">
+            <div class="gameHeroInner">
+              <div class="gameMedia">
+                <picture>
+                  <source
+                    type="image/webp"
+                    srcset="../assets/game1-1200.webp"
+                  />
+                  <img
+                    src="../assets/game1-1200.jpg"
+                    alt="Project Alpha hero"
+                    width="1000"
+                    height="560"
+                  />
+                </picture>
+              </div>
+
+              <div class="gameInfo">
+                <h1>Cyberpunk 2077</h1>
+                <p class="meta">Action RPG · CD Projekt Red · 2020</p>
+                <p class="desc">
+                  Погрузись в киберпанковый мир Найт-Сити. Создай своего
+                  персонажа, выполняй опасные миссии и раскрой тайну, которая
+                  может изменить всё.
+                </p>
+                <div class="purchase">
+                  <a class="buttonPrimary" href="#">Купить — $19.99</a>
+                  <a class="buttonGhost" href="#">Добавить в Wishlist</a>
                 </div>
+              </div>
             </div>
-        </header>
+          </div>
+        </section>
 
-        <main class="main">
-            <section class="gameHero">
-                <div class="container">
-                    <div class="gameHeroInner">
-                        <div class="gameMedia">
-                            <picture>
-                                <source type="image/webp" srcset="../assets/game1-1200.webp" />
-                                <img src="../assets/game1-1200.jpg" alt="Project Alpha hero" width="1000" height="560" />
-                            </picture>
-                        </div>
+        <section class="gameGallery container">
+          <h2>Скриншоты</h2>
+          <div class="shotGrid">
+            <picture
+              ><source type="image/webp" srcset="../assets/shot1.webp" />
+              <img
+                src="../assets/shot1.jpg"
+                alt="Shot 1"
+                width="600"
+                height="340"
+            /></picture>
+            <picture
+              ><source type="image/webp" srcset="../assets/shot1b.webp" />
+              <img
+                src="../assets/shot1b.jpg"
+                alt="Shot 1b"
+                width="600"
+                height="340"
+            /></picture>
+            <picture
+              ><source type="image/webp" srcset="../assets/shot1c.webp" />
+              <img
+                src="../assets/shot1c.jpg"
+                alt="Shot 1c"
+                width="600"
+                height="340"
+            /></picture>
+          </div>
+        </section>
+      </main>
 
-                        <div class="gameInfo">
-                            <h1>Project Alpha</h1>
-                            <p class="meta">Action · Singleplayer · 2025</p>
-                            <p class="desc">Высокоскоростной шутер с киберпанковой эстетикой, динамичным балансом и продвинутой физикой окружения.</p>
-                            <div class="purchase">
-                                <a class="buttonPrimary" href="#">Купить — $19.99</a>
-                                <a class="buttonGhost" href="#">Добавить в Wishlist</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="gameGallery container">
-                <h2>Скриншоты</h2>
-                <div class="shotGrid">
-                    <picture><source type="image/webp" srcset="../assets/shot1.webp" /><img src="../assets/shot1.jpg" alt="Shot 1" width="600" height="340" /></picture>
-                    <picture><source type="image/webp" srcset="../assets/shot1b.webp" /><img src="../assets/shot1b.jpg" alt="Shot 1b" width="600" height="340" /></picture>
-                    <picture><source type="image/webp" srcset="../assets/shot1c.webp" /><img src="../assets/shot1c.jpg" alt="Shot 1c" width="600" height="340" /></picture>
-                </div>
-            </section>
-        </main>
-
-        <footer class="footer">
-            <div class="container footerInner">
-                <div class="brandSmall"><span class="brandText">Proton</span></div>
-                <nav class="footerNav"><a href="../">Home</a><a href="./">Gallery</a></nav>
-            </div>
-        </footer>
+      <footer class="footer">
+        <div class="container footerInner">
+          <div class="brandSmall"><span class="brandText">Proton</span></div>
+          <nav class="footerNav">
+            <a href="../">Home</a><a href="./">Gallery</a>
+          </nav>
+        </div>
+      </footer>
     </div>
-</body>
+  </body>
 </html>
