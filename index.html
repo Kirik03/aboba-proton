@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Proton — Главная</title>
+    <meta name="description" content="Proton — игровой каталог и новинки. Стиль в духе Steam / Epic Games / GOG." />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <!-- Theme toggle (CSS only) -->
+    <input type="checkbox" id="themeToggle" class="themeToggle" aria-label="Переключить тему" />
+
+    <!-- Mobile menu toggle -->
+    <input type="checkbox" id="mobileToggle" class="mobileToggle" />
+
+    <!-- Modal contact toggle -->
+    <input type="checkbox" id="modalToggle" class="modalToggle" />
+
+    <div class="site">
+        <!-- Header -->
+        <header class="header" role="banner">
+            <div class="headerInner">
+                <a class="brand" href="./" aria-label="Proton — главная">
+                    <svg class="brandLogo" width="36" height="36" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <rect x="1" y="1" width="22" height="22" rx="5" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                        <path d="M6 15 L10 9 L14 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span class="brandText">Proton</span>
+                </a>
+
+                <nav class="nav" role="navigation" aria-label="Главное меню">
+                    <ul class="navList">
+                        <li><a class="navLink" href="./">Home</a></li>
+                        <li><a class="navLink" href="gallery/">Gallery</a></li>
+                        <li><a class="navLink" href="bio/">About</a></li>
+                    </ul>
+                </nav>
+
+                <div class="headerActions">
+                    <label for="themeToggle" class="themeBtn" title="Toggle theme" role="button" aria-pressed="false">Тема</label>
+                    <a class="cta" href="gallery/">Explore</a>
+                    <label for="mobileToggle" class="hamburger" aria-hidden="true">
+                        <span></span><span></span><span></span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Mobile nav -->
+            <nav class="mobileNav" role="navigation" aria-label="Мобильное меню">
+                <ul class="mobileNavList">
+                    <li><a href="./">Home</a></li>
+                    <li><a href="gallery/">Gallery</a></li>
+                    <li><a href="bio/">About</a></li>
+                    <li><label for="modalToggle" class="mobileContact">Contact</label></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Main -->
+        <main class="main" role="main">
+            <!-- Hero -->
+            <section class="hero" aria-labelledby="heroTitle">
+                <div class="heroInner">
+                    <div class="heroText">
+                        <h1 id="heroTitle">Proton — Игры. Новинки. Комьюнити.</h1>
+                        <p class="lead">Магазин и обзоры в стиле цифровых площадок — коллекции, скидки и релизы.</p>
+                        <div class="heroCtas">
+                            <a class="buttonPrimary" href="gallery/">Открыть каталог</a>
+                            <label for="modalToggle" class="buttonGhost">Быстрая заявка</label>
+                        </div>
+                    </div>
+
+                    <div class="heroMedia" role="img" aria-label="Баннер Proton">
+                        <picture>
+                            <source type="image/webp" srcset="assets/hero-1200.webp 1200w, assets/hero-800.webp 800w" />
+                            <img src="assets/hero-800.jpg" alt="Игровой баннер Proton" width="900" height="520" />
+                        </picture>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured games (cards) -->
+            <section class="featured" aria-labelledby="featuredTitle">
+                <div class="container">
+                    <h2 id="featuredTitle">Featured</h2>
+
+                    <div class="cards" role="list">
+                        <article class="card" role="listitem">
+                            <picture>
+                                <source type="image/webp" srcset="assets/game1-600.webp 600w, assets/game1-1200.webp 1200w" />
+                                <img src="assets/game1-600.jpg" alt="Project Alpha" width="420" height="240" />
+                            </picture>
+                            <div class="cardBody">
+                                <h3>Project Alpha</h3>
+                                <p class="meta">Action · 2025</p>
+                                <p class="desc">Высокоскоростной шутер с элементами выживания в киберпанковском мире.</p>
+                                <div class="cardActions">
+                                    <a class="cardBtn" href="gallery/project1.html">Подробнее</a>
+                                    <a class="cardBtnGhost" href="#">Wishlist</a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="card" role="listitem">
+                            <picture>
+                                <source type="image/webp" srcset="assets/game2-600.webp 600w, assets/game2-1200.webp 1200w" />
+                                <img src="assets/game2-600.jpg" alt="Nebula Quest" width="420" height="240" />
+                            </picture>
+                            <div class="cardBody">
+                                <h3>Nebula Quest</h3>
+                                <p class="meta">RPG · 2024</p>
+                                <p class="desc">Исследуй межзвёздные цепочки, строй флот и веди альянсы.</p>
+                                <div class="cardActions">
+                                    <a class="cardBtn" href="gallery/project2.html">Подробнее</a>
+                                    <a class="cardBtnGhost" href="#">Wishlist</a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="card" role="listitem">
+                            <picture>
+                                <source type="image/webp" srcset="assets/game3-600.webp 600w, assets/game3-1200.webp 1200w" />
+                                <img src="assets/game3-600.jpg" alt="Retro Rally" width="420" height="240" />
+                            </picture>
+                            <div class="cardBody">
+                                <h3>Retro Rally</h3>
+                                <p class="meta">Racing · 2023</p>
+                                <p class="desc">Пиксельные гонки с динамической музыкой и мультиплеерной аркадой.</p>
+                                <div class="cardActions">
+                                    <a class="cardBtn" href="gallery/project3.html">Подробнее</a>
+                                    <a class="cardBtnGhost" href="#">Wishlist</a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slider (CSS only) -->
+            <section class="showcase" aria-labelledby="showcaseTitle">
+                <div class="container">
+                    <h2 id="showcaseTitle">Новинки</h2>
+
+                    <div class="slider">
+                        <input type="radio" name="slide" id="s1" checked />
+                        <input type="radio" name="slide" id="s2" />
+                        <input type="radio" name="slide" id="s3" />
+
+                        <div class="slides">
+                            <div class="slide">
+                                <picture>
+                                    <source type="image/webp" srcset="assets/shot1.webp" />
+                                    <img src="assets/shot1.jpg" alt="Shot 1" width="1200" height="600" />
+                                </picture>
+                                <div class="slideCap">Project Alpha — Launch Trailer</div>
+                            </div>
+
+                            <div class="slide">
+                                <picture>
+                                    <source type="image/webp" srcset="assets/shot2.webp" />
+                                    <img src="assets/shot2.jpg" alt="Shot 2" width="1200" height="600" />
+                                </picture>
+                                <div class="slideCap">Nebula Quest — New Expansion</div>
+                            </div>
+
+                            <div class="slide">
+                                <picture>
+                                    <source type="image/webp" srcset="assets/shot3.webp" />
+                                    <img src="assets/shot3.jpg" alt="Shot 3" width="1200" height="600" />
+                                </picture>
+                                <div class="slideCap">Retro Rally — Seasonal Event</div>
+                            </div>
+                        </div>
+
+                        <div class="dots">
+                            <label for="s1" class="dot"></label>
+                            <label for="s2" class="dot"></label>
+                            <label for="s3" class="dot"></label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA -->
+            <section class="cta" aria-labelledby="ctaTitle">
+                <div class="container ctaInner">
+                    <h2 id="ctaTitle">Начать путешествие</h2>
+                    <p class="muted">Создайте аккаунт, соберите коллекцию и участвуйте в событиях.</p>
+                    <div class="ctaBtns">
+                        <a class="buttonPrimary" href="gallery/">Каталог игр</a>
+                        <a class="buttonGhost" href="bio/">О Proton</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer" role="contentinfo">
+            <div class="container footerInner">
+                <div class="brandSmall">
+                    <span class="brandText">Proton</span>
+                    <small class="muted">© 2025</small>
+                </div>
+
+                <nav class="footerNav" aria-label="Footer links">
+                    <a href="./">Home</a>
+                    <a href="gallery/">Gallery</a>
+                    <a href="bio/">About</a>
+                    <label for="modalToggle" class="footerContact">Contact</label>
+                </nav>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modal (CSS only) -->
+    <div class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="modalCard">
+            <label for="modalToggle" class="modalClose" aria-label="Close">✕</label>
+            <h3>Быстрая заявка</h3>
+            <form action="mailto:hello@proton.example" method="post" enctype="text/plain" class="modalForm">
+                <label>
+                    <span>Имя</span>
+                    <input type="text" name="name" required />
+                </label>
+
+                <label>
+                    <span>Email или телефон</span>
+                    <input type="text" name="contact" required />
+                </label>
+
+                <label>
+                    <span>Сообщение</span>
+                    <textarea name="message" rows="4" required></textarea>
+                </label>
+
+                <div class="modalActions">
+                    <button class="buttonPrimary" type="submit">Отправить</button>
+                    <label for="modalToggle" class="buttonGhost">Отмена</label>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

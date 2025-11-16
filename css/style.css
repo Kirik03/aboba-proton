@@ -1,0 +1,738 @@
+/* Follow the CSS formatting rules specified above */
+/* style.css - Proton gaming theme (neon violet-blue) */
+
+/* Root variables (light default) */
+/*
+    style.css — основная тема и адаптив для Proton
+    Изменения/цели (на русском):
+    - Добавил плавное переключение темы (тёмная/светлая) через CSS-переменные
+    - Реализовал CSS-only бургер-меню (чекбокс `#mobileToggle`)
+    - Добавил модальное окно с плавной анимацией (чекбокс `#modalToggle`)
+    - Добавил базовые адаптивные точки и анимации для мобильных/планшет/десктоп
+    - Комментарии на русском, читаемые и краткие
+*/
+
+:root {
+  --fontHead: "Orbitron", sans-serif;
+  --fontBase: "Inter", sans-serif;
+
+  /* тема по умолчанию (тёмная) */
+  --bg: #0b0f14;
+  --surface: #0f1720;
+  --muted: #9aa6b2;
+  --text: #e6eef8;
+
+  --accent: #7c3aed;
+  --accent2: #4f46e5;
+  --glow: 0 8px 28px rgba(124, 58, 237, 0.18);
+
+  --radius: 12px;
+  --container: 1200px;
+  --minFont: 16px;
+}
+
+/* Светлая тема: устанавливается, когда на странице отмечен соответствующий чекбокс.
+   Поддерживаются несколько id (themeToggle, themeToggleBio, themeToggleGallery).
+*/
+input.themeToggle:checked ~ *,
+input#themeToggle:checked ~ *,
+input#themeToggleGallery:checked ~ *,
+input#themeToggleBio:checked ~ * {
+  --bg: #f6f8fb;
+  --surface: #ffffff;
+  --muted: #4b5563;
+  --text: #071024;
+  --accent: #4f46e5;
+  --accent2: #7c3aed;
+  --glow: 0 8px 28px rgba(79, 70, 229, 0.08);
+}
+
+/*
+    Скрываем управляющие чекбоксы от визуального отображения, но оставляем их в DOM
+    для CSS-only переключателей (тема, мобильное меню, модал).
+    Используем абсолютное смещение вместо display:none чтобы :checked оставался работоспособным
+*/
+input.themeToggle,
+input#themeToggle,
+input#themeToggleBio,
+input#themeToggleGallery,
+input.mobileToggle,
+input#mobileToggle,
+input.modalToggle,
+input#modalToggle {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Базовая типографика */
+html {
+  font-size: 16px;
+}
+body {
+  font-family: var(--fontBase);
+  font-weight: 400;
+  font-size: var(--minFont);
+  line-height: 1.5;
+  color: var(--text);
+  background-color: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  /* плавный переход цветов при смене темы */
+  transition: background-color 300ms ease, color 300ms ease;
+}
+
+/* Контейнер */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.site {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Хедер */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 80;
+  backdrop-filter: blur(8px);
+  background-color: rgba(5, 8, 12, 0.6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+  transition: background-color 300ms ease, border-color 300ms ease;
+}
+.headerInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 84px;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--fontHead);
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--text);
+}
+.brandLogo {
+  color: var(--accent);
+  filter: drop-shadow(0 4px 18px rgba(124, 58, 237, 0.12));
+}
+.brandText {
+  font-size: 18px;
+}
+
+/* Навигация: скрыта на мобайле, видна на больших экранах */
+.nav {
+  display: none;
+}
+.navList {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.navLink {
+  font-size: 15px;
+  color: var(--muted);
+  padding: 8px 10px;
+  border-radius: 8px;
+  transition: color 180ms ease, transform 180ms ease;
+}
+.navLink:hover {
+  color: var(--text);
+  transform: translateY(-2px);
+}
+.navLink.active {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.themeBtn {
+  font-size: 14px;
+  color: var(--muted);
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  background: linear-gradient(
+    90deg,
+    rgba(124, 58, 237, 0.14),
+    rgba(79, 70, 229, 0.06)
+  );
+  color: var(--text);
+}
+
+/* Бургер */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 8px;
+}
+.hamburger span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background-color: var(--text);
+  margin: 3px 0;
+  border-radius: 2px;
+  transition: transform 260ms ease, opacity 260ms ease,
+    background-color 260ms ease;
+}
+
+/* Мобильное меню (по умолчанию скрыто). Оно показывается при checked у #mobileToggle. */
+.mobileNav {
+  display: none;
+}
+
+/* Hero и прочее (с переходами цветов/тени) */
+.hero {
+  padding: 48px 0;
+  background: linear-gradient(
+    180deg,
+    rgba(124, 58, 237, 0.06),
+    transparent 40%
+  );
+}
+.heroInner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  align-items: center;
+}
+.heroText {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.hero h1 {
+  font-family: var(--fontHead);
+  font-size: 32px;
+  line-height: 40px;
+  color: var(--text);
+}
+.lead {
+  color: var(--muted);
+  font-size: 16px;
+}
+.heroCtas {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.buttonPrimary {
+  display: inline-block;
+  font-family: var(--fontBase);
+  font-weight: 700;
+  font-size: 15px;
+  padding: 12px 18px;
+  border-radius: 12px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  color: white;
+  box-shadow: var(--glow);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+.buttonPrimary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 48px rgba(79, 46, 229, 0.22);
+}
+.buttonGhost {
+  display: inline-block;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.heroMedia {
+  width: 100%;
+  max-height: 520px;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+/* Карточки */
+.featured {
+  padding: 28px 0;
+}
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+.card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.01)
+  );
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.6);
+  transition: transform 220ms ease, box-shadow 220ms ease,
+    background-color 300ms ease;
+}
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 22px 60px rgba(79, 46, 229, 0.18);
+}
+.cardBody {
+  padding: 16px;
+}
+.card h3 {
+  font-family: var(--fontHead);
+  font-size: 18px;
+  color: var(--text);
+}
+.meta {
+  color: var(--accent);
+  font-weight: 600;
+  margin-top: 6px;
+}
+.desc {
+  color: var(--muted);
+  margin-top: 8px;
+}
+.cardActions {
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+}
+.cardBtn {
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: var(--accent);
+  color: white;
+  font-weight: 600;
+}
+.cardBtnGhost {
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+/* Слайдер (CSS-only) */
+.slider {
+  position: relative;
+  margin-top: 16px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.slides {
+  display: flex;
+  width: 300%;
+  transition: transform 520ms cubic-bezier(0.22, 0.93, 0.12, 0.99);
+}
+.slide {
+  width: 100%;
+  flex: 0 0 100%;
+  position: relative;
+}
+.slideCap {
+  position: absolute;
+  left: 18px;
+  bottom: 18px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(2, 6, 23, 0.6);
+  color: #fff;
+  font-weight: 700;
+}
+.dots {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  padding: 12px 0;
+}
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  display: inline-block;
+  cursor: pointer;
+}
+.slider input[type="radio"] {
+  display: none;
+}
+#s1:checked ~ .slides {
+  transform: translateX(0%);
+}
+#s2:checked ~ .slides {
+  transform: translateX(-100%);
+}
+#s3:checked ~ .slides {
+  transform: translateX(-200%);
+}
+#s1:checked ~ .dots label[for="s1"],
+#s2:checked ~ .dots label[for="s2"],
+#s3:checked ~ .dots label[for="s3"] {
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+}
+
+/* CTA */
+.cta {
+  padding: 36px 0;
+  background: linear-gradient(
+    90deg,
+    rgba(124, 58, 237, 0.04),
+    rgba(79, 70, 229, 0.02)
+  );
+}
+.ctaInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* Footer */
+.footer {
+  margin-top: auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.02);
+  background: transparent;
+  padding: 18px 0;
+}
+.footerInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footerNav {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* Модальное окно: скрыто по умолчанию, показывается при checked #modalToggle. 
+   Сделана плавная анимация появления (opacity + transform)
+*/
+input.modalToggle {
+  display: none;
+}
+.modal {
+  display: flex;
+  position: fixed;
+  inset: 0;
+  align-items: center;
+  justify-content: center;
+  background: rgba(2, 6, 23, 0.6);
+  z-index: 200;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity 260ms ease, transform 260ms ease;
+}
+input.modalToggle:checked ~ .site .modal,
+input.modalToggle:checked ~ .modal {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.modalCard {
+  width: 92%;
+  max-width: 520px;
+  padding: 20px;
+  border-radius: 12px;
+  background: linear-gradient(
+    180deg,
+    var(--surface),
+    rgba(255, 255, 255, 0.02)
+  );
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.6);
+  transition: transform 260ms ease, box-shadow 260ms ease;
+}
+.modalClose {
+  float: right;
+  cursor: pointer;
+  font-size: 18px;
+}
+.modalForm {
+  display: grid;
+  gap: 12px;
+  margin-top: 12px;
+}
+/* Явно применяем box-sizing и ограничения ширины к полям формы модального окна */
+.modalForm input[type="text"],
+.modalForm textarea,
+.modalForm input,
+.modalForm select {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--text);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+.modalForm label span,
+.contactForm label span {
+  display: block;
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+/* Немного уменьшим внутренние отступы модалки на очень узких экранах */
+@media (max-width: 420px) {
+  .modalCard {
+    padding: 14px;
+  }
+}
+
+/* Страницы игр / профили */
+.gameHero {
+  padding: 28px 0;
+}
+.gameHeroInner {
+  display: grid;
+  gap: 20px;
+}
+.gameMedia {
+  border-radius: 12px;
+  overflow: hidden;
+}
+.gameInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.purchase {
+  display: flex;
+  gap: 12px;
+}
+.shotGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+.bioGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-bottom: 18px;
+  gap: 18px;
+  a{
+    margin:1% 0 0.5% 1%;
+  }
+}
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px;
+  border-radius: 10px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.01),
+    rgba(255, 255, 255, 0.02)
+  );
+  text-align: center;
+  img{
+    border-radius: 25%;
+  }
+}
+
+/* Переходы для основных компонентов (чтобы тема переключалась плавно) */
+.card,
+.buttonPrimary,
+.buttonGhost,
+.header,
+.brand,
+.modalCard {
+  transition: background-color 300ms ease, color 300ms ease,
+    box-shadow 300ms ease, border-color 300ms ease;
+}
+
+/* --- Адаптивные правила --- */
+/* Мобильные устройства */
+@media (max-width: 480px) {
+  .headerInner {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .nav {
+    display: none;
+  }
+
+  /* Мобильное меню — занимают весь экран под хедером */
+  .mobileNav {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 84px;
+    padding: 16px;
+    background: var(--surface);
+    border-top: 1px solid rgba(255, 255, 255, 0.02);
+    z-index: 90;
+    transform: translateY(-8px);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 260ms ease, opacity 260ms ease;
+  }
+  /* Показ мобильного меню при включении #mobileToggle */
+  input#mobileToggle:checked ~ .site .mobileNav,
+  input.mobileToggle:checked ~ .site .mobileNav {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .heroInner {
+    grid-template-columns: 1fr;
+  }
+  .cards {
+    grid-template-columns: 1fr;
+  }
+  .cardsGrid {
+    grid-template-columns: 1fr;
+  }
+  .teamGrid {
+    grid-template-columns: 1fr;
+  }
+  .shotGrid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Анимация бургер-иконки (переворачиваем спаны) */
+  input#mobileToggle:checked ~ .site .hamburger span:nth-child(1) {
+    transform: translateY(5px) rotate(45deg);
+  }
+  input#mobileToggle:checked ~ .site .hamburger span:nth-child(2) {
+    opacity: 0;
+  }
+  input#mobileToggle:checked ~ .site .hamburger span:nth-child(3) {
+    transform: translateY(-5px) rotate(-45deg);
+  }
+}
+
+/* Планшет */
+@media (min-width: 481px) and (max-width: 1023px) {
+  .nav {
+    display: flex;
+  }
+  .mobileNav {
+    display: none;
+  }
+  .hamburger{
+    display: none;
+  }
+  .heroInner {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .cardsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .shotGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .teamGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .gameHeroInner {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+}
+
+/* Десктоп */
+@media (min-width: 1024px) {
+  .nav {
+    display: flex;
+  }
+  .mobileNav {
+    display: none;
+  }
+  .hamburger{
+    display: none;
+  }
+  .heroInner {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .cardsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .cardsGrid .catalogCard {
+    grid-template-columns: 1fr;
+  }
+  .shotGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .teamGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .gameHeroInner {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+}
+
+/* Фокусные стили доступности */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus {
+  outline: 3px solid rgba(124, 58, 237, 0.16);
+  outline-offset: 2px;
+}
+
+.muted {
+  color: var(--muted);
+}

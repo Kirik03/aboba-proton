@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Retro Rally — Proton</title>
+    <meta name="description" content="Retro Rally — страница игры" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <!-- Чекбоксы-триггеры: тема, мобильное меню, модальное окно (CSS-only) -->
+    <input type="checkbox" id="themeToggleGallery" class="themeToggle" />
+    <input type="checkbox" id="mobileToggle" class="mobileToggle" />
+    <input type="checkbox" id="modalToggle" class="modalToggle" />
+
+    <div class="site">
+      <header class="header">
+        <div class="headerInner">
+          <a class="brand" href="../"
+            ><svg class="brandLogo" width="36" height="36" viewBox="0 0 24 24">
+              <rect
+                x="1"
+                y="1"
+                width="22"
+                height="22"
+                rx="5"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+              />
+              <path
+                d="M6 15 L10 9 L14 15"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              /></svg
+            ><span class="brandText">Proton</span></a
+          >
+
+          <nav class="nav">
+            <ul class="navList">
+              <li><a href="../" class="navLink">Home</a></li>
+              <li><a href="./" class="navLink">Gallery</a></li>
+              <li><a href="../bio/" class="navLink">About</a></li>
+            </ul>
+          </nav>
+
+          <div class="headerActions">
+            <a class="cta" href="../gallery/">Back</a>
+            <!-- Бургер для мобильной навигации -->
+            <label for="mobileToggle" class="hamburger" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </label>
+          </div>
+        </div>
+      </header>
+
+      <!-- Мобильное меню (появляется при нажатии на бургер) -->
+      <nav class="mobileNav" role="navigation" aria-label="Мобильное меню">
+        <ul class="mobileNavList">
+          <li><a href="../">Home</a></li>
+          <li><a href="./">Gallery</a></li>
+          <li><a href="../bio/">About</a></li>
+          <li>
+            <label for="modalToggle" class="mobileContact">Contact</label>
+          </li>
+        </ul>
+      </nav>
+
+      <main class="main">
+        <section class="gameHero">
+          <div class="container">
+            <div class="gameHeroInner">
+              <div class="gameMedia">
+                <picture>
+                  <source
+                    type="image/webp"
+                    srcset="../assets/game3-1200.webp"
+                  />
+                  <img
+                    src="../assets/game3-1200.jpg"
+                    alt="Retro Rally hero"
+                    width="1000"
+                    height="560"
+                  />
+                </picture>
+              </div>
+
+              <div class="gameInfo">
+                <h1>Retro Rally</h1>
+                <p class="meta">Racing · Arcade · 2023</p>
+                <p class="desc">
+                  Пиксельные гонки с ретро-саундтреком и соревновательными
+                  таблицами лидеров.
+                </p>
+                <div class="purchase">
+                  <a class="buttonPrimary" href="#">Купить — $9.99</a>
+                  <a class="buttonGhost" href="#">Добавить в Wishlist</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="gameGallery container">
+          <h2>Скриншоты</h2>
+          <div class="shotGrid">
+            <picture
+              ><source type="image/webp" srcset="../assets/shot3.webp" />
+              <img
+                src="../assets/shot3.jpg"
+                alt="Shot 3"
+                width="600"
+                height="340"
+            /></picture>
+            <picture
+              ><source type="image/webp" srcset="../assets/shot3b.webp" />
+              <img
+                src="../assets/shot3b.jpg"
+                alt="Shot 3b"
+                width="600"
+                height="340"
+            /></picture>
+            <picture
+              ><source type="image/webp" srcset="../assets/shot3c.webp" />
+              <img
+                src="../assets/shot3c.jpg"
+                alt="Shot 3c"
+                width="600"
+                height="340"
+            /></picture>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="container footerInner">
+          <div class="brandSmall"><span class="brandText">Proton</span></div>
+          <nav class="footerNav">
+            <a href="../">Home</a><a href="./">Gallery</a>
+          </nav>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Модальное окно (Контактная форма, CSS-only) -->
+    <div class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="modalCard">
+        <label for="modalToggle" class="modalClose" aria-label="Close">✕</label>
+        <h3>Быстрая заявка</h3>
+        <form
+          action="mailto:hello@proton.example"
+          method="post"
+          enctype="text/plain"
+          class="modalForm"
+        >
+          <label>
+            <span>Имя</span>
+            <input type="text" name="name" required />
+          </label>
+
+          <label>
+            <span>Email или телефон</span>
+            <input type="text" name="contact" required />
+          </label>
+
+          <label>
+            <span>Сообщение</span>
+            <textarea name="message" rows="4" required></textarea>
+          </label>
+
+          <div class="modalActions">
+            <button class="buttonPrimary" type="submit">Отправить</button>
+            <label for="modalToggle" class="buttonGhost">Отмена</label>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

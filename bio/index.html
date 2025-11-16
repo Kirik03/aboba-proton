@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Proton — About</title>
+    <meta name="description" content="О Proton — миссия и команда" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <!-- Чекбоксы-триггеры: тема, мобильное меню, модальное окно (CSS-only) -->
+    <input type="checkbox" id="themeToggleBio" class="themeToggle" />
+    <input type="checkbox" id="mobileToggle" class="mobileToggle" />
+    <input type="checkbox" id="modalToggle" class="modalToggle" />
+
+    <div class="site">
+      <header class="header">
+        <div class="headerInner">
+          <a class="brand" href="../" aria-label="Proton — главная">
+            <svg
+              class="brandLogo"
+              width="36"
+              height="36"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <rect
+                x="1"
+                y="1"
+                width="22"
+                height="22"
+                rx="5"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+              />
+              <path
+                d="M6 15 L10 9 L14 15"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <span class="brandText">Proton</span>
+          </a>
+
+          <nav class="nav">
+            <ul class="navList">
+              <li><a href="../" class="navLink">Home</a></li>
+              <li><a href="../gallery/" class="navLink">Gallery</a></li>
+              <li><a href="./" class="navLink active">About</a></li>
+            </ul>
+          </nav>
+
+          <div class="headerActions">
+            <label for="themeToggleBio" class="themeBtn">Тема</label>
+            <a class="cta" href="../">Back</a>
+            <!-- Бургер для мобильной навигации -->
+            <label for="mobileToggle" class="hamburger" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </label>
+          </div>
+        </div>
+      </header>
+
+      <!-- Мобильное меню (появляется при нажатии на бургер) -->
+      <nav class="mobileNav" role="navigation" aria-label="Мобильное меню">
+        <ul class="mobileNavList">
+          <li><a href="../">Home</a></li>
+          <li><a href="../gallery/">Gallery</a></li>
+          <li><a href="./">About</a></li>
+          <li>
+            <label for="modalToggle" class="mobileContact">Contact</label>
+          </li>
+        </ul>
+      </nav>
+
+      <main class="main">
+        <section class="bioHero">
+          <div class="container">
+            <h1>О Proton</h1>
+            <p class="lead muted">
+              Платформа для игроков и разработчиков — новости, релизы и
+              коллекции.
+            </p>
+          </div>
+        </section>
+
+        <section class="bioContent container" aria-labelledby="bioTitle">
+          <h2 id="bioTitle">Наша миссия</h2>
+          <div class="bioGrid">
+            <div class="cards">
+              <picture>
+                <source type="image/webp" srcset="../assets/team.webp" />
+                <img
+                  src="../assets/team.jpg"
+                  alt="Команда Proton"
+                  width="640"
+                  height="360"
+                />
+              </picture>
+               <picture>
+                <source type="image/webp" srcset="../assets/team.webp" />
+                <img
+                  src="../assets/team.jpg"
+                  alt="Команда Proton"
+                  width="640"
+                  height="360"
+                />
+              </picture>
+               <picture>
+                <source type="image/webp" srcset="../assets/team.webp" />
+                <img
+                  src="../assets/team.jpg"
+                  alt="Команда Proton"
+                  width="640"
+                  height="360"
+                />
+              </picture>
+            </div>
+
+            <div class="bioText">
+              <h3>Команда и ценности</h3>
+              <p>
+                Proton создаётся игроками для игроков. Мы фокусируемся на
+                честных релизах, прозрачных скидках и сообществе, где каждая
+                игра получает своё место.
+              </p>
+              <p>
+                Наша цель — удобный магазин, простой интерфейс и высокая
+                производительность платформы. Мы поддерживаем разработчиков и
+                инди-студии, помогая им найти аудиторию.
+              </p>
+              <a class="buttonPrimary" href="../gallery/">Перейти в каталог</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="team container" aria-labelledby="teamTitle">
+          <h2 id="teamTitle">Команда</h2>
+          <div class="teamGrid">
+            <article class="member">
+              <img
+                src="../assets/dev1.jpg"
+                alt="Dev 1"
+                width="220"
+                height="220"
+              />
+              <h4>kiril200903</h4>
+              <p class="muted">Lead Dev</p>
+            </article>
+
+            <article class="member">
+              <img
+                src="../assets/dev2.jpg"
+                alt="Dev 2"
+                width="220"
+                height="220"
+              />
+              <h4>kirik</h4>
+              <p class="muted">Product</p>
+            </article>
+
+            <article class="member">
+              <img
+                src="../assets/dev3.jpg"
+                alt="Dev 3"
+                width="220"
+                height="220"
+              />
+              <h4>kirieshka</h4>
+              <p class="muted">Community</p>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="container footerInner">
+          <div class="brandSmall">
+            <span class="brandText">Proton</span>
+            <small class="muted">© 2025</small>
+          </div>
+
+          <nav class="footerNav">
+            <a href="../">Home</a>
+            <a href="../gallery/">Gallery</a>
+            <a href="./">About</a>
+          </nav>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Модальное окно (Контактная форма, CSS-only) -->
+    <div class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="modalCard">
+        <label for="modalToggle" class="modalClose" aria-label="Close">✕</label>
+        <h3>Быстрая заявка</h3>
+        <form
+          action="mailto:hello@proton.example"
+          method="post"
+          enctype="text/plain"
+          class="modalForm"
+        >
+          <label>
+            <span>Имя</span>
+            <input type="text" name="name" required />
+          </label>
+
+          <label>
+            <span>Email или телефон</span>
+            <input type="text" name="contact" required />
+          </label>
+
+          <label>
+            <span>Сообщение</span>
+            <textarea name="message" rows="4" required></textarea>
+          </label>
+
+          <div class="modalActions">
+            <button class="buttonPrimary" type="submit">Отправить</button>
+            <label for="modalToggle" class="buttonGhost">Отмена</label>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
