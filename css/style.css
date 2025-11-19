@@ -29,6 +29,16 @@
   --radius: 12px;
   --container: 1200px;
   --minFont: 16px;
+
+  /* modal helpers (defaults for dark theme) */
+  --modal-overlay: rgba(2, 6, 23, 0.6);
+  --modal-card-gradient-end: rgba(255, 255, 255, 0.02);
+  --modal-field-bg: rgba(255, 255, 255, 0.02);
+  --modal-field-border: rgba(255, 255, 255, 0.03);
+  --modal-box-shadow: 0 18px 48px rgba(0, 0, 0, 0.6);
+  /* header helpers */
+  --header-bg: rgba(5, 8, 12, 0.6);
+  --header-border: rgba(255, 255, 255, 0.02);
 }
 
 /* Светлая тема: устанавливается, когда на странице отмечен соответствующий чекбокс.
@@ -45,6 +55,17 @@ input#themeToggleBio:checked ~ * {
   --accent: #4f46e5;
   --accent2: #7c3aed;
   --glow: 0 8px 28px rgba(79, 70, 229, 0.08);
+
+  /* modal adjustments for light theme */
+  --modal-overlay: rgba(7, 16, 36, 0.06);
+  --modal-card-gradient-end: rgba(0, 0, 0, 0.02);
+  --modal-field-bg: rgba(0, 0, 0, 0.04);
+  --modal-field-border: rgba(0, 0, 0, 0.06);
+  --modal-box-shadow: 0 18px 48px rgba(16, 24, 40, 0.08);
+
+  /* header for light theme */
+  --header-bg: rgba(246, 248, 251, 0.85);
+  --header-border: rgba(9, 16, 36, 0.06);
 }
 
 /*
@@ -71,6 +92,7 @@ input#modalToggle {
 html {
   font-size: 16px;
 }
+
 body {
   font-family: var(--fontBase);
   font-weight: 400;
@@ -116,11 +138,12 @@ body {
   top: 0;
   z-index: 80;
   backdrop-filter: blur(8px);
-  background-color: rgba(5, 8, 12, 0.6);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+  background-color: var(--header-bg);
+  border-bottom: 1px solid var(--header-border);
   transition: background-color 300ms ease, border-color 300ms ease;
   user-select: none;
 }
+
 .headerInner {
   display: flex;
   align-items: center;
@@ -140,10 +163,12 @@ body {
   font-size: 20px;
   color: var(--text);
 }
+
 .brandLogo {
   color: var(--accent);
   filter: drop-shadow(0 4px 18px rgba(124, 58, 237, 0.12));
 }
+
 .brandText {
   font-size: 18px;
 }
@@ -152,11 +177,13 @@ body {
 .nav {
   display: none;
 }
+
 .navList {
   display: flex;
   gap: 20px;
   align-items: center;
 }
+
 .navLink {
   font-size: 15px;
   color: var(--muted);
@@ -164,10 +191,12 @@ body {
   border-radius: 8px;
   transition: color 180ms ease, transform 180ms ease;
 }
+
 .navLink:hover {
   color: var(--text);
   transform: translateY(-2px);
 }
+
 .navLink.active {
   color: var(--accent);
   font-weight: 600;
@@ -178,6 +207,7 @@ body {
   align-items: center;
   gap: 12px;
 }
+
 .themeBtn {
   font-size: 14px;
   color: var(--muted);
@@ -185,9 +215,11 @@ body {
   border-radius: 8px;
   cursor: pointer;
 }
+
 .cta {
-  display: inline-flex;
+  display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   padding: 10px 14px;
   border-radius: 10px;
@@ -211,6 +243,7 @@ body {
   cursor: pointer;
   border-radius: 8px;
 }
+
 .hamburger span {
   display: block;
   width: 20px;
@@ -236,27 +269,32 @@ body {
     transparent 40%
   );
 }
+
 .heroInner {
   display: grid;
   grid-template-columns: 1fr;
   gap: 28px;
   align-items: center;
 }
+
 .heroText {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
+
 .hero h1 {
   font-family: var(--fontHead);
   font-size: 32px;
   line-height: 40px;
   color: var(--text);
 }
+
 .lead {
   color: var(--muted);
   font-size: 16px;
 }
+
 .heroCtas {
   display: flex;
   gap: 12px;
@@ -275,10 +313,12 @@ body {
   box-shadow: var(--glow);
   transition: transform 180ms ease, box-shadow 180ms ease;
 }
+
 .buttonPrimary:hover {
   transform: translateY(-3px);
   box-shadow: 0 18px 48px rgba(79, 46, 229, 0.22);
 }
+
 .buttonGhost {
   display: inline-block;
   font-weight: 600;
@@ -288,6 +328,10 @@ body {
   color: var(--text);
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.buttonGhost:hover {
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .heroMedia {
@@ -301,11 +345,13 @@ body {
 .featured {
   padding: 28px 0;
 }
+
 .cards {
   display: grid;
   grid-template-columns: 1fr;
   gap: 18px;
 }
+
 .card {
   display: grid;
   grid-template-columns: 1fr;
@@ -321,32 +367,39 @@ body {
   transition: transform 220ms ease, box-shadow 220ms ease,
     background-color 300ms ease;
 }
+
 .card:hover {
   transform: translateY(-8px);
   box-shadow: 0 22px 60px rgba(79, 46, 229, 0.18);
 }
+
 .cardBody {
   padding: 16px;
 }
+
 .card h3 {
   font-family: var(--fontHead);
   font-size: 18px;
   color: var(--text);
 }
+
 .meta {
   color: var(--accent);
   font-weight: 600;
   margin-top: 6px;
 }
+
 .desc {
   color: var(--muted);
   margin-top: 8px;
 }
+
 .cardActions {
   margin-top: 12px;
   display: flex;
   gap: 10px;
 }
+
 .cardBtn {
   padding: 8px 12px;
   border-radius: 10px;
@@ -354,6 +407,7 @@ body {
   color: white;
   font-weight: 600;
 }
+
 .cardBtnGhost {
   padding: 8px 12px;
   border-radius: 10px;
@@ -369,16 +423,19 @@ body {
   overflow: hidden;
   border-radius: 12px;
 }
+
 .slides {
   display: flex;
   width: 300%;
   transition: transform 520ms cubic-bezier(0.22, 0.93, 0.12, 0.99);
 }
+
 .slide {
   width: 100%;
   flex: 0 0 100%;
   position: relative;
 }
+
 .slideCap {
   position: absolute;
   left: 18px;
@@ -389,12 +446,14 @@ body {
   color: #fff;
   font-weight: 700;
 }
+
 .dots {
   display: flex;
   gap: 10px;
   justify-content: center;
   padding: 12px 0;
 }
+
 .dot {
   width: 10px;
   height: 10px;
@@ -403,18 +462,23 @@ body {
   display: inline-block;
   cursor: pointer;
 }
+
 .slider input[type="radio"] {
   display: none;
 }
+
 #s1:checked ~ .slides {
   transform: translateX(0%);
 }
+
 #s2:checked ~ .slides {
   transform: translateX(-100%);
 }
+
 #s3:checked ~ .slides {
   transform: translateX(-200%);
 }
+
 #s1:checked ~ .dots label[for="s1"],
 #s2:checked ~ .dots label[for="s2"],
 #s3:checked ~ .dots label[for="s3"] {
@@ -430,6 +494,7 @@ body {
     rgba(79, 70, 229, 0.02)
   );
 }
+
 .ctaInner {
   display: flex;
   align-items: center;
@@ -444,11 +509,13 @@ body {
   background: transparent;
   padding: 18px 0;
 }
+
 .footerInner {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+
 .footerNav {
   display: flex;
   gap: 12px;
@@ -461,25 +528,28 @@ body {
 input.modalToggle {
   display: none;
 }
+
 .modal {
   display: flex;
   position: fixed;
   inset: 0;
   align-items: center;
   justify-content: center;
-  background: rgba(2, 6, 23, 0.6);
+  background: var(--modal-overlay);
   z-index: 200;
   opacity: 0;
   pointer-events: none;
   transform: translateY(8px);
   transition: opacity 260ms ease, transform 260ms ease;
 }
+
 input.modalToggle:checked ~ .site .modal,
 input.modalToggle:checked ~ .modal {
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
 }
+
 .modalCard {
   width: 92%;
   max-width: 520px;
@@ -488,21 +558,24 @@ input.modalToggle:checked ~ .modal {
   background: linear-gradient(
     180deg,
     var(--surface),
-    rgba(255, 255, 255, 0.02)
+    var(--modal-card-gradient-end)
   );
-  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.6);
+  box-shadow: var(--modal-box-shadow);
   transition: transform 260ms ease, box-shadow 260ms ease;
 }
+
 .modalClose {
   float: right;
   cursor: pointer;
   font-size: 18px;
 }
+
 .modalForm {
   display: grid;
   gap: 12px;
   margin-top: 12px;
 }
+
 /* Явно применяем box-sizing и ограничения ширины к полям формы модального окна */
 .modalForm input[type="text"],
 .modalForm textarea,
@@ -513,10 +586,11 @@ input.modalToggle:checked ~ .modal {
   max-width: 100%;
   padding: 10px 12px;
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--modal-field-bg);
   color: var(--text);
-  border: 1px solid rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--modal-field-border);
 }
+
 .modalForm label span,
 .contactForm label span {
   display: block;
@@ -536,42 +610,51 @@ input.modalToggle:checked ~ .modal {
 .gameHero {
   padding: 28px 0;
 }
+
 .gameHeroInner {
   display: grid;
   gap: 20px;
 }
+
 .gameMedia {
   border-radius: 12px;
   overflow: hidden;
 }
+
 .gameInfo {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
+
 .purchase {
   display: flex;
   gap: 12px;
 }
+
 .shotGrid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 12px;
 }
+
 .bioGrid {
   display: grid;
   grid-template-columns: 1fr;
   margin-bottom: 18px;
   gap: 18px;
+
   a {
     margin: 1% 0 0.5% 1%;
   }
 }
+
 .teamGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
 }
+
 .member {
   display: flex;
   flex-direction: column;
@@ -584,6 +667,7 @@ input.modalToggle:checked ~ .modal {
     rgba(255, 255, 255, 0.02)
   );
   text-align: center;
+
   img {
     border-radius: 25%;
   }
@@ -607,6 +691,7 @@ input.modalToggle:checked ~ .modal {
     padding-left: 12px;
     padding-right: 12px;
   }
+
   .nav {
     display: none;
   }
@@ -629,6 +714,7 @@ input.modalToggle:checked ~ .modal {
     pointer-events: none;
     transition: transform 260ms ease, opacity 260ms ease;
   }
+
   /* Показ мобильного меню при включении #mobileToggle */
   input#mobileToggle:checked ~ .site .mobileNav,
   input.mobileToggle:checked ~ .site .mobileNav {
@@ -640,15 +726,19 @@ input.modalToggle:checked ~ .modal {
   .heroInner {
     grid-template-columns: 1fr;
   }
+
   .cards {
     grid-template-columns: 1fr;
   }
+
   .cardsGrid {
     grid-template-columns: 1fr;
   }
+
   .teamGrid {
     grid-template-columns: 1fr;
   }
+
   .shotGrid {
     grid-template-columns: 1fr;
   }
@@ -657,9 +747,11 @@ input.modalToggle:checked ~ .modal {
   input#mobileToggle:checked ~ .site .hamburger span:nth-child(1) {
     transform: translateY(5px) rotate(45deg);
   }
+
   input#mobileToggle:checked ~ .site .hamburger span:nth-child(2) {
     opacity: 0;
   }
+
   input#mobileToggle:checked ~ .site .hamburger span:nth-child(3) {
     transform: translateY(-5px) rotate(-45deg);
   }
@@ -670,28 +762,36 @@ input.modalToggle:checked ~ .modal {
   .nav {
     display: flex;
   }
+
   .mobileNav {
     display: none;
   }
+
   .hamburger {
     display: none;
   }
+
   .heroInner {
     grid-template-columns: 1fr 1fr;
     gap: 20px;
   }
+
   .cards {
     grid-template-columns: repeat(2, 1fr);
   }
+
   .cardsGrid {
     grid-template-columns: repeat(2, 1fr);
   }
+
   .shotGrid {
     grid-template-columns: repeat(2, 1fr);
   }
+
   .teamGrid {
     grid-template-columns: repeat(2, 1fr);
   }
+
   .gameHeroInner {
     grid-template-columns: 1fr 1fr;
     align-items: center;
@@ -703,31 +803,40 @@ input.modalToggle:checked ~ .modal {
   .nav {
     display: flex;
   }
+
   .mobileNav {
     display: none;
   }
+
   .hamburger {
     display: none;
   }
+
   .heroInner {
     grid-template-columns: 1fr 1fr;
     gap: 28px;
   }
+
   .cards {
     grid-template-columns: repeat(3, 1fr);
   }
+
   .cardsGrid {
     grid-template-columns: repeat(3, 1fr);
   }
+
   .cardsGrid .catalogCard {
     grid-template-columns: 1fr;
   }
+
   .shotGrid {
     grid-template-columns: repeat(3, 1fr);
   }
+
   .teamGrid {
     grid-template-columns: repeat(3, 1fr);
   }
+
   .gameHeroInner {
     grid-template-columns: 1fr 1fr;
     align-items: center;
@@ -753,6 +862,7 @@ textarea:focus {
     opacity: 0;
     transform: translateY(12px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -764,6 +874,7 @@ textarea:focus {
   100% {
     filter: drop-shadow(0 4px 18px rgba(124, 58, 237, 0.2));
   }
+
   50% {
     filter: drop-shadow(0 10px 40px rgba(124, 58, 237, 0.5));
   }
