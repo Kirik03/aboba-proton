@@ -101,6 +101,15 @@ body {
   min-height: 100vh;
 }
 
+/* Apply theme variables to the main site wrapper so CSS-only theme toggle
+   (which sets variables on sibling elements after the hidden checkbox)
+   affects the visible page background and text color. */
+.site {
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background-color 300ms ease, color 300ms ease;
+}
+
 /* Хедер */
 .header {
   position: sticky;
@@ -110,6 +119,7 @@ body {
   background-color: rgba(5, 8, 12, 0.6);
   border-bottom: 1px solid rgba(255, 255, 255, 0.02);
   transition: background-color 300ms ease, border-color 300ms ease;
+  user-select: none;
 }
 .headerInner {
   display: flex;
@@ -515,7 +525,7 @@ input.modalToggle:checked ~ .modal {
   margin-bottom: 6px;
 }
 
-/* Немного уменьшим внутренние отступы модалки на очень узких экранах */
+/* Внутренние отступы модалки на очень узких экранах */
 @media (max-width: 420px) {
   .modalCard {
     padding: 14px;
@@ -553,8 +563,8 @@ input.modalToggle:checked ~ .modal {
   grid-template-columns: 1fr;
   margin-bottom: 18px;
   gap: 18px;
-  a{
-    margin:1% 0 0.5% 1%;
+  a {
+    margin: 1% 0 0.5% 1%;
   }
 }
 .teamGrid {
@@ -574,7 +584,7 @@ input.modalToggle:checked ~ .modal {
     rgba(255, 255, 255, 0.02)
   );
   text-align: center;
-  img{
+  img {
     border-radius: 25%;
   }
 }
@@ -590,7 +600,7 @@ input.modalToggle:checked ~ .modal {
     box-shadow 300ms ease, border-color 300ms ease;
 }
 
-/* --- Адаптивные правила --- */
+/* --- адаптивка --- */
 /* Мобильные устройства */
 @media (max-width: 480px) {
   .headerInner {
@@ -663,7 +673,7 @@ input.modalToggle:checked ~ .modal {
   .mobileNav {
     display: none;
   }
-  .hamburger{
+  .hamburger {
     display: none;
   }
   .heroInner {
@@ -696,7 +706,7 @@ input.modalToggle:checked ~ .modal {
   .mobileNav {
     display: none;
   }
-  .hamburger{
+  .hamburger {
     display: none;
   }
   .heroInner {
@@ -735,4 +745,61 @@ textarea:focus {
 
 .muted {
   color: var(--muted);
+}
+
+/* Keyframes анимации */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glowPulse {
+  0%,
+  100% {
+    filter: drop-shadow(0 4px 18px rgba(124, 58, 237, 0.2));
+  }
+  50% {
+    filter: drop-shadow(0 10px 40px rgba(124, 58, 237, 0.5));
+  }
+}
+
+/* Применение анимаций к карточкам */
+.card {
+  animation: fadeInUp 600ms ease-out backwards;
+}
+
+.card:nth-child(1) {
+  animation-delay: 100ms;
+}
+
+.card:nth-child(2) {
+  animation-delay: 200ms;
+}
+
+.card:nth-child(3) {
+  animation-delay: 300ms;
+}
+
+.card:nth-child(4) {
+  animation-delay: 400ms;
+}
+
+/* Плавное масштабирование изображений в карточках */
+.cardImage {
+  transition: transform 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.card:hover .cardImage {
+  transform: scale(1.08);
+}
+
+/* Анимация бренда */
+.brandLogo {
+  animation: glowPulse 3s ease-in-out infinite;
 }
