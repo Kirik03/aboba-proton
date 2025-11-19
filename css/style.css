@@ -1,22 +1,10 @@
-/* Follow the CSS formatting rules specified above */
-/* style.css - Proton gaming theme (neon violet-blue) */
-
-/* Root variables (light default) */
-/*
-    style.css — основная тема и адаптив для Proton
-    Изменения/цели (на русском):
-    - Добавил плавное переключение темы (тёмная/светлая) через CSS-переменные
-    - Реализовал CSS-only бургер-меню (чекбокс `#mobileToggle`)
-    - Добавил модальное окно с плавной анимацией (чекбокс `#modalToggle`)
-    - Добавил базовые адаптивные точки и анимации для мобильных/планшет/десктоп
-    - Комментарии на русском, читаемые и краткие
-*/
+/* style.css - Proton gaming theme */
 
 :root {
   --fontHead: "Orbitron", sans-serif;
   --fontBase: "Inter", sans-serif;
 
-  /* тема по умолчанию (тёмная) */
+  /* dark theme */
   --bg: #0b0f14;
   --surface: #0f1720;
   --muted: #9aa6b2;
@@ -30,20 +18,49 @@
   --container: 1200px;
   --minFont: 16px;
 
-  /* modal helpers (defaults for dark theme) */
+  /* modal & header variables */
   --modal-overlay: rgba(2, 6, 23, 0.6);
   --modal-card-gradient-end: rgba(255, 255, 255, 0.02);
   --modal-field-bg: rgba(255, 255, 255, 0.02);
   --modal-field-border: rgba(255, 255, 255, 0.03);
   --modal-box-shadow: 0 18px 48px rgba(0, 0, 0, 0.6);
-  /* header helpers */
   --header-bg: rgba(5, 8, 12, 0.6);
   --header-border: rgba(255, 255, 255, 0.02);
 }
 
-/* Светлая тема: устанавливается, когда на странице отмечен соответствующий чекбокс.
-   Поддерживаются несколько id (themeToggle, themeToggleBio, themeToggleGallery).
-*/
+/* Скроллбар */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 6px;
+  transition: background 300ms ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent2);
+}
+
+/* Скроллбар Firefox */
+* {
+  scrollbar-color: var(--accent) var(--bg);
+  scrollbar-width: thin;
+}
+
+/* Скроллбар светлой темы */
+input#themeToggle:checked ~ ::-webkit-scrollbar-track,
+input#themeToggleGallery:checked ~ ::-webkit-scrollbar-track,
+input#themeToggleBio:checked ~ ::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+/* Светлая тема */
 input.themeToggle:checked ~ *,
 input#themeToggle:checked ~ *,
 input#themeToggleGallery:checked ~ *,
@@ -68,11 +85,7 @@ input#themeToggleBio:checked ~ * {
   --header-border: rgba(9, 16, 36, 0.06);
 }
 
-/*
-    Скрываем управляющие чекбоксы от визуального отображения, но оставляем их в DOM
-    для CSS-only переключателей (тема, мобильное меню, модал).
-    Используем абсолютное смещение вместо display:none чтобы :checked оставался работоспособным
-*/
+/* Скрытые чекбоксы */
 input.themeToggle,
 input#themeToggle,
 input#themeToggleBio,
@@ -88,7 +101,7 @@ input#modalToggle {
   overflow: hidden;
 }
 
-/* Базовая типографика */
+/* Типографика */
 html {
   font-size: 16px;
 }
@@ -123,9 +136,7 @@ body {
   min-height: 100vh;
 }
 
-/* Apply theme variables to the main site wrapper so CSS-only theme toggle
-   (which sets variables on sibling elements after the hidden checkbox)
-   affects the visible page background and text color. */
+/* Обёртка темы */
 .site {
   background-color: var(--bg);
   color: var(--text);
@@ -173,7 +184,7 @@ body {
   font-size: 18px;
 }
 
-/* Навигация: скрыта на мобайле, видна на больших экранах */
+/* Навигация */
 .nav {
   display: none;
 }
@@ -255,12 +266,12 @@ body {
     background-color 260ms ease;
 }
 
-/* Мобильное меню (по умолчанию скрыто). Оно показывается при checked у #mobileToggle. */
+/* Мобильное меню */
 .mobileNav {
   display: none;
 }
 
-/* Hero и прочее (с переходами цветов/тени) */
+/* Герой */
 .hero {
   padding: 48px 0;
   background: linear-gradient(
@@ -416,7 +427,7 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.02);
 }
 
-/* Слайдер (CSS-only) */
+/* Слайдер */
 .slider {
   position: relative;
   margin-top: 16px;
@@ -576,7 +587,7 @@ input.modalToggle:checked ~ .modal {
   margin-top: 12px;
 }
 
-/* Явно применяем box-sizing и ограничения ширины к полям формы модального окна */
+/* Modal form fields */
 .modalForm input[type="text"],
 .modalForm textarea,
 .modalForm input,
@@ -599,14 +610,14 @@ input.modalToggle:checked ~ .modal {
   margin-bottom: 6px;
 }
 
-/* Внутренние отступы модалки на очень узких экранах */
+/* Mobile modal padding */
 @media (max-width: 420px) {
   .modalCard {
     padding: 14px;
   }
 }
 
-/* Страницы игр / профили */
+/* Game pages */
 .gameHero {
   padding: 28px 0;
 }
@@ -673,7 +684,7 @@ input.modalToggle:checked ~ .modal {
   }
 }
 
-/* Переходы для основных компонентов (чтобы тема переключалась плавно) */
+/* Component transitions */
 .card,
 .buttonPrimary,
 .buttonGhost,
@@ -696,7 +707,7 @@ input.modalToggle:checked ~ .modal {
     display: none;
   }
 
-  /* Мобильное меню — занимают весь экран под хедером */
+  /* Mobile nav menu */
   .mobileNav {
     display: flex;
     flex-direction: column;
@@ -715,7 +726,7 @@ input.modalToggle:checked ~ .modal {
     transition: transform 260ms ease, opacity 260ms ease;
   }
 
-  /* Показ мобильного меню при включении #mobileToggle */
+  /* Show mobile nav */
   input#mobileToggle:checked ~ .site .mobileNav,
   input.mobileToggle:checked ~ .site .mobileNav {
     transform: translateY(0);
@@ -743,7 +754,7 @@ input.modalToggle:checked ~ .modal {
     grid-template-columns: 1fr;
   }
 
-  /* Анимация бургер-иконки (переворачиваем спаны) */
+  /* Hamburger animation */
   input#mobileToggle:checked ~ .site .hamburger span:nth-child(1) {
     transform: translateY(5px) rotate(45deg);
   }
@@ -757,7 +768,7 @@ input.modalToggle:checked ~ .modal {
   }
 }
 
-/* Планшет */
+/* Tablet */
 @media (min-width: 481px) and (max-width: 1023px) {
   .nav {
     display: flex;
@@ -798,7 +809,7 @@ input.modalToggle:checked ~ .modal {
   }
 }
 
-/* Десктоп */
+/* Desktop */
 @media (min-width: 1024px) {
   .nav {
     display: flex;
@@ -843,7 +854,7 @@ input.modalToggle:checked ~ .modal {
   }
 }
 
-/* Фокусные стили доступности */
+/* Accessibility */
 a:focus,
 button:focus,
 input:focus,
@@ -856,7 +867,7 @@ textarea:focus {
   color: var(--muted);
 }
 
-/* Keyframes анимации */
+/* Keyframes */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -880,7 +891,7 @@ textarea:focus {
   }
 }
 
-/* Применение анимаций к карточкам */
+/* Card animations */
 .card {
   animation: fadeInUp 600ms ease-out backwards;
 }
@@ -901,7 +912,7 @@ textarea:focus {
   animation-delay: 400ms;
 }
 
-/* Плавное масштабирование изображений в карточках */
+/* Image scaling */
 .cardImage {
   transition: transform 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
@@ -910,7 +921,7 @@ textarea:focus {
   transform: scale(1.08);
 }
 
-/* Анимация бренда */
+/* Brand animation */
 .brandLogo {
   animation: glowPulse 3s ease-in-out infinite;
 }
